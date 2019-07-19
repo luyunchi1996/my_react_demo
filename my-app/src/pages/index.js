@@ -10,7 +10,7 @@ class Index extends PureComponent {
     }
 
     render(){
-
+        
         return (<div>Hello React</div>)
 
     }
