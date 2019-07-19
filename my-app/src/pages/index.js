@@ -1,7 +1,7 @@
 import React,{PureComponent} from 'react';
 import NewCompoment from '../components/demo'
 
-@NewCompoment
+@NewCompoment()
 class Index extends PureComponent {
      
     constructor(props){
