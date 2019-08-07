@@ -1,6 +1,6 @@
 import A from "./a";
 
-import React from "react";
+import React,{Fragment} from "react";
 import { createForm } from 'rc-form';
 
 
@@ -8,6 +8,7 @@ import { createForm } from 'rc-form';
 class ProxyComponent {
   data = {};
   props = {};
+  el={}
   constructor(props) {
     this.props = props;
   }
@@ -21,11 +22,9 @@ class ProxyComponent {
       };
     }
     const Wrapped = _WrappedComponent();
-    const {config,form:{getFieldDecorator}}= this.props
+    const {config}= this.props
     // return <Wrapped {...config}/>
-    return getFieldDecorator("a",{
-        initialValue:"123"
-    })(<Wrapped key={config.key} {...config} />);
+    return <Wrapped key={config.key} {...config} />;
   }
   setData = value => {
     this.data = value;
@@ -40,7 +39,6 @@ export default function SuperDemo(Component) {
 
   return class extends createForm()(Component) {
     prop={}
-
     constructor(props) {
       super(props);
       this.state = {};
@@ -53,20 +51,15 @@ export default function SuperDemo(Component) {
       const list = componentList.map(o => {
         return o.setComponent(A);
       });
-
       return list;
     };
-
     getData = () => {
       componentList.map(o => {
-        console.log(o.getData());
         return 0;
       });
       return 0;
     };
-
     addComponentInList = list => {
-
       list.map(k => {
         const newProps={
             ...this.prop,
@@ -76,9 +69,7 @@ export default function SuperDemo(Component) {
         return 0;
       });
     };
-
     addComponent = () => {};
-
     render() {
       const form ={
         setFields:this.setFields,
@@ -104,7 +95,6 @@ export default function SuperDemo(Component) {
         ...this.props
       };
       this.prop = newProps
-
       return (
         <div>
           <Component {...newProps} />

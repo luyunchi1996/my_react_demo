@@ -13,6 +13,6 @@ export default class A extends PureComponent {
 
     render(){
        const {value,onChange} = this.props
-       return (<Input />)     
+       return (<Input value={value} onChange={onChange} />)     
     }
 }
