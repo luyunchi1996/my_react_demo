@@ -1,7 +1,10 @@
 import styles from './index.css';
 import React, { PureComponent, Fragment } from 'react';
-
+import {Header,Footer,Content,LeftContent,Screen} from '../components/skeleton'
 import { connect } from 'dva';
+
+
+
 class Index  extends PureComponent{
 
   constructor(props){
@@ -9,15 +12,14 @@ class Index  extends PureComponent{
     this.state={}
   }
 
-  componentWillMount(){
-    debugger
-  }
-  componentDidMount(){}
-  componentWillReceiveProps(nextProps){}
-
-
    render (){
-      return (<div>123</div>)
+      return (
+        <Fragment>
+          <Screen>
+            <Header></Header>
+          </Screen>
+        </Fragment>
+      )
    }
 
 }
