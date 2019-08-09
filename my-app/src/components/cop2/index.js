@@ -12,14 +12,11 @@ class Cop2 extends PureComponent{
     }
     
     componentWillReceiveProps(nextProps){
-
-        debugger
     }
 
 
     render(){
         const {handlerClick,a} = this.props
-        debugger
         return <Button onClick={handlerClick} >{a?'t':'f'}</Button>
     }
 }
