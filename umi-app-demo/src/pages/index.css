@@ -1,23 +1,64 @@
+.box{
+   width: 250px;
+   height: 150px;
+   position: absolute;
 
-.normal {
-  font-family: Georgia, sans-serif;
-  margin-top: 4em;
-  text-align: center;
+
+
 }
 
-.welcome {
-  height: 328px;
-  background: url(../assets/yay.jpg) no-repeat center 0;
-  background-size: 388px 328px;
+.boxIn{
+  left: 0px;
+  animation: in cubic-bezier(0.34, 0.86, 0.94, 1.01) 1s;
+  -moz-animation: in cubic-bezier(0.34, 0.86, 0.94, 1.01) 1s;	/* Firefox */
+  -webkit-animation: in cubic-bezier(0.34, 0.86, 0.94, 1.01) 1s;	/* Safari 和 Chrome */
+  -o-animation: in cubic-bezier(0.34, 0.86, 0.94, 1.01) 1s;	/* Opera */
+}
+.boxOut{
+  width: 0;
+  right: 0;
+  animation: out cubic-bezier(0.34, 0.86, 0.94, 1.01) 1s;
+  -moz-animation: out cubic-bezier(0.34, 0.86, 0.94, 1.01) 1s;	/* Firefox */
+  -webkit-animation: out cubic-bezier(0.34, 0.86, 0.94, 1.01) 1s;	/* Safari 和 Chrome */
+  -o-animation: out cubic-bezier(0.34, 0.86, 0.94, 1.01) 1s;	/* Opera */
+
 }
 
-.list {
-  font-size: 1.2em;
-  margin-top: 1.8em;
-  list-style: none;
-  line-height: 1.5em;
+.boxs{
+   position: relative;
+   width: 250px;
+   height: 150px;
+   background-color: beige;
 }
 
-.list code {
-  background: #f7f7f7;
+.yellow{
+   background-color: yellow;
+}
+
+.blue{
+   background-color: blue;
+}
+.red{
+  background-color: red;
+}
+
+@keyframes out {
+  0%{
+    width: 250px;
+
+  }
+  100%{
+    width: 0px;
+    right: 0px;
+  }
+}
+
+
+@keyframes in {
+  0%{
+    left: -250px;
+  }
+  100%{
+    left: 0px;
+  }
 }

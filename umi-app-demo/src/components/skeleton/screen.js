@@ -69,7 +69,7 @@ class Screen extends PureComponent{
          }
 
 
-         return (<div style={{height:"100%",backgroundColor:"yellow"}} >{newComponentList.length!==0?newComponentList:children }</div>)
+         return (<div style={{height:"100%"}} >{newComponentList.length!==0?newComponentList:children }</div>)
     }
 
 }
