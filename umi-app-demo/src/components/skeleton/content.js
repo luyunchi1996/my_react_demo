@@ -22,13 +22,13 @@ class Content extends PureComponent{
     
 
     render(){
-         const {height="80%",backgroundColor="#f0ceff",fixHeight=false} = this.props;
-         const  leftContent = <LeftContent/>
+         const {height="80%",fixHeight=false} = this.props
          let {children} = this.props
-         let style = {minHeight:height,display:"flex",backgroundColor:backgroundColor}
+         let style = {minHeight:height,display:"flex"}
          if(fixHeight)
-            style = {height:height,overflow:"auto",display:"flex",backgroundColor:"#f0ceff"}
+            style = {height:height,overflow:"auto",display:"flex"}
 
+         const leftContent =<LeftContent/>
          let newComponentList = []
          if(children&&typeof(children) !=="string"){
 

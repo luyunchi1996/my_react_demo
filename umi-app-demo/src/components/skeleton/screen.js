@@ -1,7 +1,5 @@
 import React,{PureComponent} from "react";
 import {Header,Footer,Content} from './'
-
-
 class Screen extends PureComponent{
 
     constructor(props){
@@ -23,11 +21,12 @@ class Screen extends PureComponent{
          let {children} = this.props
          let childMap = {}
          let heightCount = 0
-         let isArray = false;
-         const header = <Header/>
+         let isArray = false
+         const header =<Header/>
+         const footer =<Footer/>
          const content = <Content/>
-         const footer = <Footer/>
-      if(children&&typeof(children) !=="string"){
+
+         if(children&&typeof(children) !=="string"){
             if(!(children instanceof Array))
                children=[children]
             if(children instanceof Array){
