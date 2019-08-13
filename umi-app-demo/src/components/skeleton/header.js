@@ -7,8 +7,8 @@ class Header extends PureComponent{
     }
 
     render(){
-         const {children,height="8%"} = this.props
-         return (<div style={{height:height,backgroundColor:"blue"}}>{children}</div>)
+         const {children,height="8%",backgroundColor="blue"} = this.props
+         return (<div style={{height,backgroundColor}}>{children}</div>)
     }
 
 }

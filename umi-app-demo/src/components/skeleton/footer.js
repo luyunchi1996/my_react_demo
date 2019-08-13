@@ -7,8 +7,8 @@ class Footer extends PureComponent{
     }
 
     render(){
-         const {children,height="12%"} = this.props
-         return (<div style={{height:height,backgroundColor:"green"}} >{children}</div>)
+         const {children,height="12%",backgroundColor="blue"} = this.props
+         return (<div style={{height,backgroundColor}} >{children}</div>)
     }
 
 }
