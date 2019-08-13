@@ -1,4 +1,6 @@
 import React,{PureComponent} from "react";
+import {LeftContent} from './'
+
 class Content extends PureComponent{
 
     constructor(props){
@@ -22,6 +24,7 @@ class Content extends PureComponent{
          if(fixHeight)
             style = {height:height,overflow:"auto",display:"flex",backgroundColor:"#f0ceff"}
 
+         const leftContent =<LeftContent/>
          let newComponentList = []
          if(children&&typeof(children) !=="string"){
 
@@ -31,7 +34,7 @@ class Content extends PureComponent{
             if(children instanceof Array){
                 children.map((child)=>{
                     if(typeof(child.type)!=="string"){
-                       if(child.type.name==="LeftContent"){
+                       if(child.type.name===leftContent.type.name){
                             const NewComponent = this._warpedComponent(child)
                             newComponentList.push(<NewComponent   {...child.props}/>)
                         }else{

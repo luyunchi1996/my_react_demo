@@ -1,4 +1,5 @@
 import React,{PureComponent} from "react";
+import {Header,Footer,Content} from './'
 class Screen extends PureComponent{
 
     constructor(props){
@@ -20,6 +21,10 @@ class Screen extends PureComponent{
          let childMap = {}
          let heightCount = 0
          let isArray = false
+         const header =<Header/>
+         const footer =<Footer/>
+         const content = <Content/>
+
          if(children&&typeof(children) !=="string"){
             if(!(children instanceof Array))
                children=[children]
@@ -31,11 +36,11 @@ class Screen extends PureComponent{
                     if(!props.height){
                         if(typeof(child.type) ==="string" )
                           return 0
-                        if(child.type.name ==="Header")
+                        if(child.type.name ===header.type.name)
                            height =8
-                        if(child.type.name ==="Content")
+                        if(child.type.name ===content.type.name)
                            height =80
-                        if(child.type.name ==="Footer")
+                        if(child.type.name ===footer.type.name)
                            height =12
                     }else{
                          height = parseInt(props.height)
@@ -49,8 +54,8 @@ class Screen extends PureComponent{
          }
          if(isArray&&heightCount !==100){
               let subHeight = 100 - heightCount
-              if(childMap["Content"])
-                childMap["Content"] =childMap["Content"]+subHeight
+              if(childMap[content.type.name])
+                childMap[content.type.name] =childMap[content.type.name]+subHeight
          }
 
          let newComponentList = []

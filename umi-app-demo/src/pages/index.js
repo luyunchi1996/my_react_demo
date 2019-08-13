@@ -43,6 +43,10 @@ class Index  extends PureComponent{
     //    return <NewComponent className={`${styles.box} ${styles.boxIn} ${styles.blue}` } style={{display:"flex",alignItems:"center",justifyContent:"center",backgroundColor:rgb}} >{value}</NewComponent>
     //  }
 
+     const iheight = window.innerHeight;
+     const iwidth = window.innerWidth;
+     const devicePixelRatio = window.devicePixelRatio
+     debugger
       return (
         <Fragment>
           {/* <div className={`${styles.boxs}`}>
@@ -58,8 +62,9 @@ class Index  extends PureComponent{
             <i onClick={()=>this.clickHandler(4)}>5</i>
           </p> */}
           <Screen>
-            <Header />
+            <Header >iw:{iwidth},ih:{iheight},dpr:{devicePixelRatio}</Header>
             <Content />
+            <Footer />
           </Screen>
         </Fragment>
       )
