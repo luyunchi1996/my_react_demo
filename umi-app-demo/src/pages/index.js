@@ -59,7 +59,10 @@ class Index  extends PureComponent{
           </p> */}
           <Screen>
             <Header />
-            <Content />
+            <Content>
+               <LeftContent />
+               <div>content</div>
+            </Content>
           </Screen>
         </Fragment>
       )
