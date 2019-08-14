@@ -11,22 +11,24 @@ export default {
   props:{
      height:String
   },
+  inject: ['heightOpt'],
   data (){
      return {
         style:{
            height:this.height
-        }
+        },
      }
   },
   computed:{
-
-     setStyle(){
-       return {
-           height:this.height
-        }
-     }
   },
   created(){
+    const tagName = this.$options._componentTag
+    const heightOpts =this.heightOpt
+
+    if(heightOpts[tagName]){
+        this.style["height"] = heightOpts[tagName]+"px"
+    }
+
   },
   watch: {
   },
@@ -36,6 +38,7 @@ export default {
 <style scoped>
    .header{
       height: 8%;
-      background-color: blue;
+      background-color:  #4073f9;
+
    }
 </style>>

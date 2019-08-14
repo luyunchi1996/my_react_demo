@@ -18,5 +18,7 @@ export default {
       width: 100%;
       height: 100%;
       background-color: yellow;
+      position: relative;
+      z-index: 200
    }
 </style>
