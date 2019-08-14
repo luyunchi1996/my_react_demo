@@ -27,7 +27,6 @@
                    <option value="right">发送方</option>
                    <option value="left">回复方</option>
                 </select>
-                <div style="width: 50px;height: 40px;background-color: red;position: fixed;"></div>
                 <textarea v-model="sendMessage" />
                 <button @click="handlerSubmit"  >submit</button>
             </Footer>
@@ -51,7 +50,7 @@ export default {
     return {
        screenHeights:{
           Header:64,
-          Footer:40
+          Footer:80
        },
        fixedHeight:true,
        leftContentShow:false,
@@ -154,14 +153,14 @@ export default {
  .footer_index select{
     float: left;
     width: 18%;
-      height: 100%;
+      height: 40px;
      border: 0;
      background-color: #dcdcdc;
  }
   .footer_index textarea{
      float: left;
      width: 67%;
-     height: 100%;
+     height: 40px;
      border: 0;
      background-color: #dcdcdc;
      text-indent: 14px;
@@ -169,7 +168,7 @@ export default {
   .footer_index button{
      float: left;
      width: 15%;
-     height: 100%;
+     height: 40px;
      border: 0;
      color: #fff;
      background-color: #4073f9;
