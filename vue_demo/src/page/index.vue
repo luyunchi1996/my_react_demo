@@ -1,11 +1,11 @@
 <template>
     <div class="box">
-      <Screen  >
-            <Header height="12%">
+      <Screen :heightOpts="screenHeights" >
+            <Header>
               <div @click="showLeftContent" style="font-size:22px;">+</div>
               <div>当前会话: test</div>
             </Header>
-            <Content :fixedHeight="fixedHeight" class="index_content"  height="80%">
+            <Content :fixedHeight="fixedHeight" class="index_content">
               <div class="left_content" v-if="leftContentShow" >
                   <ul class="left_content_list">
                     <li class="item">
@@ -22,11 +22,12 @@
               </div>
 
             </Content>
-            <Footer class="footer_index"  height="8%">
+            <Footer class="footer_index">
                 <select v-model="sendValue" @change="sendChange">
                    <option value="right">发送方</option>
                    <option value="left">回复方</option>
                 </select>
+                <div style="width: 50px;height: 40px;background-color: red;position: fixed;"></div>
                 <textarea v-model="sendMessage" />
                 <button @click="handlerSubmit"  >submit</button>
             </Footer>
