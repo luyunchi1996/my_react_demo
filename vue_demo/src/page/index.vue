@@ -1,9 +1,11 @@
 <template>
     <div>
       <Screen>
-        <Header height="8%"/>
-        <Content/>
-        <Footer/>
+        <Part>
+           <Header height="64px"/>
+           <Content height="800PX"/>
+           <Footer height="180px"/>
+        </Part>
       </Screen>
     </div>
 </template>

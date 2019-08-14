@@ -1,5 +1,5 @@
 <template>
-   <div class="footer">
+   <div class="footer" :style="style">
      <slot></slot>
    </div>
 </template>
@@ -8,9 +8,15 @@
 <script>
 export default {
   name:"Footer",
-  props:{},
+  props:{
+     height:String
+  },
   data (){
-     return {}
+     return {
+        style:{
+           height:this.height
+        }
+     }
   },
 
 }

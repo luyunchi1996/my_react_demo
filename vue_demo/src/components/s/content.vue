@@ -1,5 +1,5 @@
 <template>
-   <div class="content">
+   <div class="content" :style="style">
      <slot></slot>
    </div>
 </template>
@@ -8,9 +8,15 @@
 <script>
 export default {
   name:"Content",
-  props:{},
+  props:{
+     height:String
+  },
   data (){
-     return {}
+     return {
+        style:{
+           height:this.height
+        }
+     }
   },
 
 }

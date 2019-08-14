@@ -20,11 +20,6 @@ export default {
   },
   computed:{
 
-     setStyle(){
-       return {
-           height:this.height
-        }
-     }
   },
   created(){
   },

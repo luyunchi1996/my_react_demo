@@ -13,16 +13,11 @@ export default {
      return {}
   },
   created(){
-
+    debugger
   },
+ 
   mounted(){
-
-     this.$children.map((child)=>{
-         child.$options.propsData.height="10%"
-         debugger
-        //  console.log(child.$options.propsData)
-     })
-
+    debugger
   },
 
 
@@ -36,7 +31,7 @@ export default {
      left: 0;
      width: 100%;
      height: 100%;
-     background-color: green;
+     background-color:#11db54;
   }
 
 </style>>
