@@ -29,6 +29,11 @@ export default {
     const window_innerHeight =this.height&&this.height.indexOf("%")===-1?parseInt(this.height):window.innerHeight
     let contentHeight=0
     let currentHeight = 0
+    
+    window.onresize =()=>{
+      alert("onresize:"+window.innerHeight)
+    }
+
     if(this.heightOpts){
       for(let key in this.heightOpts ){
         if(key==="Content")

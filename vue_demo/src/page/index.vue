@@ -27,8 +27,8 @@
                    <option value="right">发送方</option>
                    <option value="left">回复方</option>
                 </select>
-                <textarea v-model="sendMessage"/>
-                <button @click="handlerSubmit">submit</button>
+                <textarea v-model="sendMessage" />
+                <button @click="handlerSubmit"  >submit</button>
             </Footer>
       </Screen>
     </div>
@@ -56,16 +56,7 @@ export default {
        leftContentShow:false,
        sendValue:"right",
        sendMessage:"",
-       chatBoxs:[{
-          content:"test",
-          contentDirect:"left"
-       },
-       {
-          content:"test",
-          contentDirect:"right"
-       },
-
-       ]
+       chatBoxs:[]
     }
 
   },
@@ -76,12 +67,14 @@ export default {
      sendChange(value){
      },
      handlerSubmit(){
-       this.chatBoxs.push(
-        {
-          content:this.sendMessage,
-          contentDirect:this.sendValue
-       },
-       )
+      if(this.sendMessage)
+         this.chatBoxs.push(
+         {
+            content:this.sendMessage,
+            contentDirect:this.sendValue
+         }
+         )
+         this.sendMessage=""
      }
   }
 }
@@ -109,20 +102,23 @@ export default {
 
   .index_content_warp .chatblock{
 
-      width: 60%;
-      margin: 2%;
+      width: 70%;
+      margin: 12px 2%;
       display: flex;
-      align-items: center;
+      /* align-items: center; */
   }
   .index_content_warp .right{
      position: relative;
-     left:36%;
+     left:26%;
      flex-direction: row-reverse;
   }
   .index_content_warp .chatblock p{
      background-color: #e3f1cb;
      padding: 6px;
      overflow:hidden;
+     font-size: 14px;
+     display: flex;
+     align-items: center;
      word-break: break-all;
   }
   .index_content_warp .chatblock img{
