@@ -49,9 +49,6 @@ export default {
   },
  
   mounted(){
-<<<<<<< HEAD
-    debugger
-=======
 
     //  this.$children.map((child)=>{
     //      console.log(child.$options._componentTag)
@@ -59,7 +56,6 @@ export default {
     //     //  console.log(child.$options.propsData)
     //  })
 
->>>>>>> 5d6ded3871dca1464c5485f9b7294162f517dcb8
   },
 
 
@@ -73,11 +69,7 @@ export default {
      left: 0;
      width: 100%;
      height: 100%;
-<<<<<<< HEAD
-     background-color:#11db54;
-=======
      z-index: 100;
->>>>>>> 5d6ded3871dca1464c5485f9b7294162f517dcb8
   }
 
 </style>>
