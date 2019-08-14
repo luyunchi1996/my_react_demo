@@ -31,7 +31,7 @@ export default {
     let currentHeight = 0
     
     window.onresize =()=>{
-      alert("onresize:"+window.innerHeight)
+  
     }
 
     if(this.heightOpts){
