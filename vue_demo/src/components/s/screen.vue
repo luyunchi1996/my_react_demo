@@ -29,9 +29,9 @@ export default {
     const window_innerHeight =this.height&&this.height.indexOf("%")===-1?parseInt(this.height):window.innerHeight
     let contentHeight=0
     let currentHeight = 0
-    
+
     window.onresize =()=>{
-  
+
     }
 
     if(this.heightOpts){
@@ -52,7 +52,7 @@ export default {
     }
 
   },
- 
+
   mounted(){
 
     //  this.$children.map((child)=>{
@@ -69,7 +69,7 @@ export default {
 
 <style scoped>
   .screen{
-     position:absolute;
+     /* position:absolute; */
      top: 0;
      left: 0;
      width: 100%;
