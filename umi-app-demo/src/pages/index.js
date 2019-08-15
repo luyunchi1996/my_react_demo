@@ -25,6 +25,10 @@ class Index  extends PureComponent{
       return (
         <Fragment>
           <Screen>
+             <Header></Header>
+             <Content></Content>
+             <Footer></Footer>
+
           </Screen>
         </Fragment>
       )
