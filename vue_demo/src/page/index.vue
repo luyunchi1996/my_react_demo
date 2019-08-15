@@ -31,6 +31,7 @@
                 <button @click="handlerSubmit"  >submit</button>
             </Footer>
       </Screen>
+
     </div>
 </template>
 
@@ -50,7 +51,7 @@ export default {
     return {
        screenHeights:{
           Header:64,
-          Footer:80
+          Footer:40
        },
        fixedHeight:true,
        leftContentShow:false,
@@ -132,6 +133,7 @@ export default {
      background-color: rgba(0, 0, 0, 0.5);
      position: absolute;
      top:0;
+     z-index: 1000;
      overflow: hidden auto;
   }
 
@@ -153,14 +155,14 @@ export default {
  .footer_index select{
     float: left;
     width: 18%;
-      height: 40px;
+     height: 100%;
      border: 0;
      background-color: #dcdcdc;
  }
   .footer_index textarea{
      float: left;
      width: 67%;
-     height: 40px;
+     height: 100%;
      border: 0;
      background-color: #dcdcdc;
      text-indent: 14px;
@@ -168,7 +170,7 @@ export default {
   .footer_index button{
      float: left;
      width: 15%;
-     height: 40px;
+     height: 100%;
      border: 0;
      color: #fff;
      background-color: #4073f9;

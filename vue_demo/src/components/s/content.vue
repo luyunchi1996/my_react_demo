@@ -23,9 +23,6 @@ export default {
   created(){
     const tagName = this.$options._componentTag
     const heightOpts =this.heightOpt
-
-
-
     if(heightOpts[tagName]){
 
         if(!this.fixedHeight){
