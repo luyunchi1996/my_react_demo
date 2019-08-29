@@ -17,7 +17,7 @@ export default {
    .part{
       width: 100%;
       height: 100%;
-      background-color: yellow;
+      background-color: #f7f7f7;
       position: relative;
       z-index: 200
    }

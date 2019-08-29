@@ -1,7 +1,7 @@
 <template>
    <Screen>
 
-       <Content height="100%" class="content">
+       <Content class="content" height="100%">
           <div class="warp">
             <div class="formItems">
                <Input class="item" placeholder="用户名"/>
@@ -9,18 +9,15 @@
                <Checkbox v-model="autologin">自动登录</Checkbox>
                <Button class="item btn-login" type="primary">登录</Button>
             </div>
-            <div class="formItems">
+            <div class="formItems login-footer">
                  <p><span>用户名</span><span></span></p>
                  <p><a>注册</a></p>
             </div>
-
           </div>
        </Content>
    </Screen>
 </template>
-
 <script>
-
 
 import {Screen,Content} from "@/components/s"
 
@@ -35,7 +32,7 @@ export default {
         data:{
           autologin:true
         },
-
+       fixedHeight:true,
       }
    },
    methods:{
@@ -52,6 +49,8 @@ export default {
    }
    .content .warp{
        background-color: #ffffff;
+       position: relative;
+       top: -15%;
        width: 320px;
        min-height: 280px;
        border-radius:5px;
@@ -59,6 +58,10 @@ export default {
    }
    .formItems{
       padding: 20px;
+   }
+   .login-footer{
+      display: flex;
+      justify-content: space-between;
    }
    .item{
       margin: 10px 0;

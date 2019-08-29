@@ -48,7 +48,6 @@ export default {
       }
 
       this._provided.heightOpt =heightOpts
-
     }
 
   },
@@ -77,4 +76,4 @@ export default {
      z-index: 100;
   }
 
-</style>>
+</style>
