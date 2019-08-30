@@ -1,8 +1,8 @@
 <template>
  <div class="menu">
-   <MenuItem v-for="(o,i) in data" :key="i" :name="o.name" :href="o.href" :isParent="o.isParent" >
-      <MenuItem v-for="(o1,j) in o.children" :key="j" :name="o1.name" :href="o1.href" :isParent="o1.isParent">
-         <MenuItem v-for="(o2,k) in o1.children" :key="k" :name="o2.name" :href="o2.href" ></MenuItem>
+   <MenuItem v-for="(o,i) in data" :key="i" :name="o.label||o.name" :href="o.href" :isParent="o.isParent" >
+      <MenuItem v-for="(o1,j) in o.children" :key="j" :name="o1.label||o1.name" :href="o1.href" :isParent="o1.isParent">
+         <MenuItem v-for="(o2,k) in o1.children" :key="k" :name="o2.label||o2.name" :href="o2.href" ></MenuItem>
       </MenuItem>
    </MenuItem>
  </div>
@@ -12,20 +12,22 @@
 
 import MenuItem from "./menuItem"
 import routes from "../../router/routes"
+import { defer } from 'q';
 
 function setRouteData(routes){
   let flag=true
-  function setRouteList(rlist,routeList){
-     function setItems(routeList,rou){
+  function setRouteList(rlist,routeList,parentItem){
+     function setItems(routeList,rou,parentItem){
        routeList.forEach((rous)=>{
 
           if(rous.name===rou.parent){
+              rous.isParent=true
               rou.isParent=false
               rous.children.push(rou)
               flag=true
           }else{
-             rou.isParent=true
-             setItems(rous.children,rou)
+            //  rou.isParent=false
+             setItems(rous.children,rou,rous)
           }
         })
        if(routeList.length===0){
@@ -38,10 +40,9 @@ function setRouteData(routes){
       }
       const rou = rlist.shift()
       if(routeList.length===0){
-         rou.isParent=true
          routeList.push(rou)
       }else{
-      setItems(routeList,rou)
+      setItems(routeList,rou,routeList[0])
 
       if(!flag){
          routeList.push(rou)
@@ -60,13 +61,10 @@ function setRouteData(routes){
           let newR =JSON.parse(JSON.stringify(route))
           newR.children=[]
           newR.component={}
-          // newR.isParent=false
           newR.parent=route.name
-          newR.name = route.label
           newR.href = `#${route.path}`
           newR.parent=parent
           if(route.children){
-            // newR.isParent=true
             newR.href = `#`
             if(!route.hideMenu)
                allRoute.push(newR)
@@ -75,37 +73,14 @@ function setRouteData(routes){
             if(!route.hideMenu)
              allRoute.push(newR)
           }
-
       })
   }
 
-
+   
   getAllRoute(routes,"")
-  const listData = setRouteList(allRoute,[])
 
-  return listData;
-
-
-
-  // routes.forEach(route => {
-
-  //    if (!route.hideMenu){
-  //         route.isParent=false
-  //         route.parent=parent
-  //         route.name = route.label
-  //         route.href = `#${route.path}`
-  //         if(routeList.length===0)
-  //            routeList.push(route)
-  //         setRouteList(routeList,route,false)
-
-  //    }
-  //    if(route.children){
-  //      route.isParent=true
-  //      route.href = `#`
-  //      setRouteData(route.children,routeList,route.name)
-  //    }
-  // });
-
+  const list = setRouteList(allRoute,[])
+  return list;
 
 }
 export default {
