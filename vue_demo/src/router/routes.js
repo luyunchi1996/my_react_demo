@@ -1,6 +1,7 @@
 import index from '@/page/index'
 import login from '@/page/login'
 import chat from '@/page/chat'
+import ParentView from '@/components/parent-view/index'
 import UserSetting from "@/page/system/user"
 import RoleSetting from "@/page/system/role"
 
@@ -15,19 +16,19 @@ const routes=[
       {
         path: '/system',
         name: 'System',
-        label:"系统管理",
+        label:"x",
         component:index,
         children:[
            {
               path: '/system/user',
               name: 'UserSetting',
-              label:"用户管理",
-              component: UserSetting
+              label:"x1",
+              component: UserSetting,
            },
            {
             path: '/system/role',
             name: 'RoleSetting',
-            label:"角色管理",
+            label:"x2",
             component: RoleSetting,
           },
         ]

@@ -6,7 +6,13 @@
              <Menu/>
           </div>
           <div class="main-content">
-             <router-view></router-view>
+            <div>
+              <BreadCrumb :breadCrumbList="breadCrumbList"/>
+            </div>
+            <div>
+              <router-view></router-view>
+            </div>
+
           </div>
         </Content>
     </Screen>
@@ -16,13 +22,16 @@
 // import {List} from "@/components/starndlist";
 import {Screen,Header,Part,Content,Footer} from "@/components/s"
 import {Menu} from "@/components/menu"
+import {BreadCrumb} from "@/components/bread-crumb"
+
 export default {
   name: 'index',
   components:{
     Screen,
     Header,
     Content,
-    Menu
+    Menu,
+    BreadCrumb
   },
   data () {
     return {
@@ -30,9 +39,27 @@ export default {
          Header:64
        },
        fixedHeight:true,
-       chatBoxs:[]
+       chatBoxs:[],
+       breadCrumbList:[
+         {name:"home",href:"#/"},
+         {name:"sys",href:"#/system"},
+         {name:"role",href:"#/system/role"},
+       ]
     }
+  },
 
+  computed:{
+
+  },
+
+  watch:{
+    '$route' (newRoute) {
+        console.log(newRoute)
+    }
+  },
+
+  mounted() {
+       console.log("route: ",this.$route)
   },
   methods:{
   }
@@ -51,4 +78,5 @@ export default {
   .content-flex .main-content{
      flex-grow: 1;
   }
+
 </style>

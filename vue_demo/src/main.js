@@ -8,7 +8,7 @@ import qs from 'qs'
 import VueAxios  from 'vue-axios'
 // import VueResource from 'vue-resource'
 import VueRouter from "vue-router";
-import VueVideoPlayer from 'vue-video-player'
+// import VueVideoPlayer from 'vue-video-player'
 
 // require videojs style
 import 'video.js/dist/video-js.css'
@@ -19,10 +19,10 @@ import 'iview/dist/styles/iview.css';
 Vue.use(VueRouter);
 Vue.use(iView);
 
-Vue.use(VueVideoPlayer, /* {
-  options: global default options,
-  events: global videojs events
-} */)
+// Vue.use(VueVideoPlayer, /* {
+//   options: global default options,
+//   events: global videojs events
+// } */)
 
 Vue.config.productionTip = false
 Vue.use(VueAxios,axios)

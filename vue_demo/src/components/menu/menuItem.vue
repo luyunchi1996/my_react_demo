@@ -54,7 +54,7 @@ export default {
     width: 100%;
   }
   .menu-child-icon::after{
-    content: "»";
+    content: ">";
     display:block;
     float: right;
   }
