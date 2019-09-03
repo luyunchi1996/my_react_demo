@@ -1,0 +1,16 @@
+.tEditor {
+  height: 500px;
+  width: 500px;
+  background: aliceblue;
+  overflow: auto;
+  padding: 15px;
+  font-size: 14px;
+}
+.tEditor p {
+  padding: 0;
+  margin: 6px 0;
+  line-height: 1.5;
+  min-height: 12px;
+  text-indent: 28px;
+  text-align: justify;
+}

@@ -6,6 +6,15 @@
 
 
 }
+.inputBox{
+   width: 500px;
+   height: 500px;
+   background-color: rosybrown;
+   overflow: auto;
+   display: block;
+   padding: 12px;
+   margin: 12px;
+  }
 
 .boxIn{
   left: 0px;
