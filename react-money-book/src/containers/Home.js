@@ -2,12 +2,22 @@ import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import Ionicon from "react-ionicons";
 import logo from "../logo.svg";
+import {withRouter} from "react-router-dom";
 import PriceList from "../components/PriceList";
 import ViewTab from "../components/ViewTab";
 import MonthPicker from "../components/MonthPicker";
 import TotalPrice from "../components/TotalPrice";
 import CreateBtn from "../components/CreateBtn";
-import { LIST_VIEW, CHART_VIEW, TYPE_INCOME, TYPE_OUTCOME,padLeft } from "../utility";
+import {
+  LIST_VIEW,
+  CHART_VIEW,
+  TYPE_INCOME,
+  TYPE_OUTCOME,
+  padLeft
+} from "../utility";
+import {withContext} from "../withContext"
+import { from } from "rxjs";
+
 
 class Home extends Component {
   constructor(props) {
@@ -50,62 +60,46 @@ class Home extends Component {
       }
     };
   }
- 
 
-  onModifyItem =(item)=>{
-    const {items} = this.state
-    const newItem = items.map((o)=>{
-       if(o.id===item.id){
-          return {
-             ...o,
-             title:"修改内容"
-          }
-       }
-       return o
-    } )
-    this.setState({items:newItem})
-  }
+  onModifyItem = item => {
+     const {history} = this.props
+     history.push(`/edit/${item.id}`)
+  };
 
-  onDeleteItem =(item)=>{
-    const {items} = this.state
-    const newItem = items.filter((o)=>o.id!==item.id)
-    this.setState({items:newItem})
-
-  }
-  onChangeMonthPicker=(year,month)=>{
+  onDeleteItem = item => {
+    const {actions}= this.props
+    actions.deleteItem(item)
+  };
+  onChangeMonthPicker = (year, month) => {
     this.setState({ currentDate: { year, month } });
-  }
+  };
 
+  onTabChange = view => {
+    this.setState({ tabView: view });
+  };
 
-  onTabChange=(view)=>{
-    this.setState({ tabView:view });
-  }
-  
-  onClickCreateBtnItem =()=>{
-    const newItem =    {
-      id: 5,
-      title: "title1",
-      price: 100,
-      date: "2018-10-07",
-      cid: "2"
-    }
-    const {items} = this.state
-    this.setState({items:[newItem,...items]})
+  onClickCreateBtnItem = () => {
+    const {history} = this.props
+    history.push('/create')
 
-  }
-
+  };
 
   render() {
     let totalIncome = 0,
       totalOutcome = 0;
 
+    const {data}=this.props
     const { categories, items, currentDate, tabView } = this.state;
-    const itemsWithCategory = items.map(obj => {
-      return {
-        ...obj,
-        category: categories[obj.cid]
-      };
-    }).filter((o)=>o.date.includes(`${currentDate.year}-${padLeft(currentDate.month)}`)  );
+    const itemsWithCategory = items
+      .map(obj => {
+        return {
+          ...obj,
+          category: categories[obj.cid]
+        };
+      })
+      .filter(o =>
+        o.date.includes(`${currentDate.year}-${padLeft(currentDate.month)}`)
+      );
     itemsWithCategory.forEach(item => {
       if (item.category.type === TYPE_OUTCOME) {
         totalOutcome += item.price;
@@ -113,36 +107,37 @@ class Home extends Component {
         totalIncome += item.price;
       }
     });
+   
 
+    
     return (
-      <Fragment>
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <div>
-            <MonthPicker
-              year={currentDate.year}
-              month={currentDate.month}
-              onChange={this.onChangeMonthPicker}
-            />
-            <TotalPrice income={totalIncome} outcome={totalOutcome} />
-          </div>
-        </header>
-        <ViewTab
-          activeTab={tabView}
-          onTabChange={this.onTabChange}
-        />
-        <CreateBtn onClick={this.onClickCreateBtnItem} />
-        {tabView === LIST_VIEW && (
-          <PriceList
-            items={itemsWithCategory}
-            onModifyItem={this.onModifyItem}
-            onDeleteItem={this.onDeleteItem}
-          />
-        )}
-        {tabView === CHART_VIEW && <div>图表模式</div>}
-      </Fragment>
+
+            <Fragment>
+              <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <div>
+                  <MonthPicker
+                    year={currentDate.year}
+                    month={currentDate.month}
+                    onChange={this.onChangeMonthPicker}
+                  />
+                  <TotalPrice income={totalIncome} outcome={totalOutcome} />
+                </div>
+              </header>
+              <ViewTab activeTab={tabView} onTabChange={this.onTabChange} />
+              <CreateBtn onClick={this.onClickCreateBtnItem} />
+              {tabView === LIST_VIEW && (
+                <PriceList
+                  items={itemsWithCategory}
+                  onModifyItem={this.onModifyItem}
+                  onDeleteItem={this.onDeleteItem}
+                />
+              )}
+              {tabView === CHART_VIEW && <div>图表模式</div>}
+            </Fragment>
+
     );
   }
 }
 
-export default Home;
+export default withRouter(withContext(Home));
