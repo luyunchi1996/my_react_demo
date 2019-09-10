@@ -1,19 +1,27 @@
 {
-  "posts": [
-    {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+    "login": [
+        {
+            "userName": "张三",
+            "passWord": "123456",
+            "id":"1",
+            "role":"2",
+            "authKey":"c62kdlx1k4zkep4gmqbzg8dkdefr333334iqbzg8dkdic6kdlx1k4"
+        },
+        {
+            "userName": "admin",
+            "passWord": "123456",
+            "id":"2",
+            "role":"1",
+            "authKey":"cep4gmqbzg8dkdi6kdlx1k4zkep4gmqbzg8dkdi2qbzg8dkdic6kdlx1k4"
+        },
+        {
+            "userName": "user",
+            "passWord": "123456",
+            "id":"3",
+            "role":"3",
+            "authKey":"c6kdlx1ke4zkep4gmqbzg8dkdi3qbzgep4gmqbzg8dkdi8dkdic6kdlx1k4"
+        }
+    ]
+
+
 }

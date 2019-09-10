@@ -2,12 +2,14 @@ import React, { Fragment, Component } from "react";
 import PropTypes from "prop-types";
 import Ionicon from "react-ionicons";
 import logo from "../logo.svg";
-import {withRouter} from "react-router-dom";
+import store from 'store'
+import { withRouter } from "react-router-dom";
 import PriceList from "../components/PriceList";
 import ViewTab from "../components/ViewTab";
 import MonthPicker from "../components/MonthPicker";
 import TotalPrice from "../components/TotalPrice";
 import CreateBtn from "../components/CreateBtn";
+import {NavBar,Menu,MenuItem} from "../components/NavBar"
 import {
   LIST_VIEW,
   CHART_VIEW,
@@ -15,9 +17,7 @@ import {
   TYPE_OUTCOME,
   padLeft
 } from "../utility";
-import {withContext} from "../withContext"
-import { from } from "rxjs";
-
+import { withContext } from "../withContext";
 
 class Home extends Component {
   constructor(props) {
@@ -62,13 +62,13 @@ class Home extends Component {
   }
 
   onModifyItem = item => {
-     const {history} = this.props
-     history.push(`/edit/${item.id}`)
+    const { history } = this.props;
+    history.push(`/edit/${item.id}`);
   };
 
   onDeleteItem = item => {
-    const {actions}= this.props
-    actions.deleteItem(item)
+    const { actions } = this.props;
+    actions.deleteItem(item);
   };
   onChangeMonthPicker = (year, month) => {
     this.setState({ currentDate: { year, month } });
@@ -79,16 +79,15 @@ class Home extends Component {
   };
 
   onClickCreateBtnItem = () => {
-    const {history} = this.props
-    history.push('/create')
-
+    const { history } = this.props;
+    history.push("/create");
   };
 
   render() {
     let totalIncome = 0,
       totalOutcome = 0;
 
-    const {data}=this.props
+    const { data } = this.props;
     const { categories, items, currentDate, tabView } = this.state;
     const itemsWithCategory = items
       .map(obj => {
@@ -107,35 +106,60 @@ class Home extends Component {
         totalIncome += item.price;
       }
     });
-   
 
-    
+    const userInfo = store.get("userInfo");
+
     return (
-
-            <Fragment>
-              <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <div>
-                  <MonthPicker
-                    year={currentDate.year}
-                    month={currentDate.month}
-                    onChange={this.onChangeMonthPicker}
-                  />
-                  <TotalPrice income={totalIncome} outcome={totalOutcome} />
-                </div>
-              </header>
-              <ViewTab activeTab={tabView} onTabChange={this.onTabChange} />
-              <CreateBtn onClick={this.onClickCreateBtnItem} />
-              {tabView === LIST_VIEW && (
-                <PriceList
-                  items={itemsWithCategory}
-                  onModifyItem={this.onModifyItem}
-                  onDeleteItem={this.onDeleteItem}
-                />
-              )}
-              {tabView === CHART_VIEW && <div>图表模式</div>}
-            </Fragment>
-
+      <Fragment>
+        <NavBar leftIcon={logo} title="首页" rightIcon="ios-menu" rightOnClick={()=>{console.log("menuClick")}}>
+            <Menu>
+               <MenuItem onClick={()=>{
+                  const { history } = this.props;
+                  if(!userInfo)
+                    history.push("/user/login");
+                }}>
+                 <p style={{display:"flex","alignItems":"center",margin:0}}>
+                  <Ionicon
+                      style={{
+                        padding: "5px",
+                        position: "relative",
+                        top: "5px",
+                        right: "10px"
+                      }}
+                      color={"#5ccbea"}
+                      icon={"ios-contact"}
+                      fontSize="40px"
+                     
+                    />
+                    <span>{userInfo&&userInfo.userName||"未登录"}</span>
+                 </p>
+               </MenuItem>
+               <MenuItem>返回首页</MenuItem>
+            </Menu>
+        </NavBar>
+        {/* <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <div>
+            <MonthPicker
+              year={currentDate.year}
+              month={currentDate.month}
+              onChange={this.onChangeMonthPicker}
+            />
+            <TotalPrice income={totalIncome} outcome={totalOutcome} />
+          </div>
+        </header>
+        <ViewTab activeTab={tabView} onTabChange={this.onTabChange} />
+        <CreateBtn onClick={this.onClickCreateBtnItem} />
+        {tabView === LIST_VIEW && (
+          <PriceList
+            items={itemsWithCategory}
+            onModifyItem={this.onModifyItem}
+            onDeleteItem={this.onDeleteItem}
+          />
+        )}
+        {tabView === CHART_VIEW && <div>图表模式</div>} */}
+      
+      </Fragment>
     );
   }
 }
